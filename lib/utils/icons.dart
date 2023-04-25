@@ -1,6 +1,8 @@
 class MyIcons{
   // png
-  static const login = "assets/image/png/img_1.png";
+  static const logo = "assets/image/png/img_3.png";
+  static const lottiee = "assets/image/png/img.png";
+
 
 
   // lottie

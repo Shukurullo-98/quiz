@@ -3,8 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz/global_widgets/my_button.dart';
+import 'package:quiz/screens/sms_code_screen.dart';
 import 'package:quiz/utils/icons.dart';
+import 'package:quiz/utils/utility_functions.dart';
 
+import '../global_widgets/appbar.dart';
+import '../global_widgets/my_custom_input.dart';
 import '../utils/colors.dart';
 import '../utils/style.dart';
 
@@ -27,20 +31,9 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Login",
-          style: MyTextStyle.interRegular400.copyWith(
-            fontSize: 24.sp,
-            color: MyColors.black,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: MyColors.white,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: MyColors.white,
-        ),
+      resizeToAvoidBottomInset: false,
+      appBar: CustomAppBar(
+        title: 'Login',
       ),
       backgroundColor: MyColors.white,
       body: Column(children: [
@@ -50,20 +43,10 @@ class _LoginState extends State<Login> {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: TextFormField(
-            controller: textController,
+          child: MyCustomInput(
+            textController: textController,
             focusNode: focusNode,
-            textInputAction: TextInputAction.done,
-            decoration: InputDecoration(
-              hintText: "Enter your mobile number",
-              hintStyle: MyTextStyle.interLight300.copyWith(
-                fontSize: 14,
-                color: MyColors.black.withOpacity(0.3),
-              ),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: MyColors.C_E5E5E5),
-              ),
-            ),
+            hintText: "Enter your mobile number",
           ),
         ),
         SizedBox(
@@ -71,8 +54,40 @@ class _LoginState extends State<Login> {
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 50.w),
-          child: MyButton(buttonText: "Login", onTap: () {  },),
+          child: MyButton(
+            buttonText: "Login",
+            onTap: () {
+              if (textController.text == '+998901234567') {
+                UtilityFunctions.getMyToast(message: "Enter SMS code");
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return SMSCodeScreen();
+                    },
+                  ),
+                );
+              } else {
+                UtilityFunctions.getMyToast(message: "Error phone number");
+              }
+            },
+          ),
         ),
+        Expanded(
+          child: SizedBox(),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.w),
+          child: Text(
+            "Term's and conditons apply POWERED BY - sparrowdewops.com ",
+            textAlign: TextAlign.center,
+            style: MyTextStyle.interRegular400.copyWith(
+                fontSize: 16.sp, color: MyColors.black.withOpacity(0.5)),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        )
       ]),
     );
   }
