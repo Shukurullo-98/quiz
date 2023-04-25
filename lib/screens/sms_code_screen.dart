@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 import '../global_widgets/appbar.dart';
 import '../global_widgets/my_button.dart';
@@ -8,7 +9,6 @@ import '../utils/colors.dart';
 import '../utils/icons.dart';
 import '../utils/style.dart';
 import '../utils/utility_functions.dart';
-
 
 class SMSCodeScreen extends StatefulWidget {
   const SMSCodeScreen({Key? key}) : super(key: key);
@@ -31,33 +31,35 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
       ),
       backgroundColor: MyColors.white,
       body: Column(children: [
-        SizedBox(height: 60.h,),
+        SizedBox(
+          height: 60.h,
+        ),
         Image.asset(MyIcons.logo),
         SizedBox(
-          height: 30.h,
+          height: 130.h,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: TextFormField(
-            keyboardType: TextInputType.phone,
-            controller: textController,
-            focusNode: focusNode,
-            textInputAction: TextInputAction.done,
-            decoration: InputDecoration(
-              hintText: "Enter your mobile number",
-              hintStyle: MyTextStyle.interLight300.copyWith(
-                fontSize: 14,
-                color: MyColors.black.withOpacity(0.3),
-              ),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: MyColors.C_E5E5E5),
+          padding: EdgeInsets.symmetric(horizontal: 35.w),
+          child: Text(
+            "Enter your 6 digit here",
+            textAlign: TextAlign.center,
+            style: MyTextStyle.interRegular400.copyWith(
+                fontSize: 20.sp, color: MyColors.black.withOpacity(0.5)),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 85),
+          child: PinFieldAutoFill(
+            decoration: UnderlineDecoration(
+              textStyle: MyTextStyle.interBold700
+                  .copyWith(fontSize: 25, color: Colors.black.withOpacity(0.5)),
+              colorBuilder: FixedColorBuilder(
+                Colors.black,
               ),
             ),
-            onChanged: (value){
-              if(value == '+998901234567'){
-                UtilityFunctions.getMyToast(message: "Enter SMS code");
-              }
-            },
+            onCodeSubmitted: (value) {},
+            onCodeChanged: (value) {},
+            codeLength: 6,
           ),
         ),
         SizedBox(
@@ -70,21 +72,21 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
             onTap: () {},
           ),
         ),
-        Expanded(
-          child: SizedBox(),
+
+        SizedBox(
+          height: 20.h,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 35.w),
           child: Text(
-            "Term's and conditons apply POWERED BY - sparrowdewops.com ",
+            "Login with social media",
             textAlign: TextAlign.center,
             style: MyTextStyle.interRegular400.copyWith(
-                fontSize: 16.sp, color: MyColors.black.withOpacity(0.5)),
+                fontSize: 20.sp, color: MyColors.black.withOpacity(0.5)),
           ),
         ),
-        SizedBox(
-          height: 20,
-        )
+        Expanded(child: SizedBox()),
+        Image.asset(MyIcons.otp, width: 200, height: 200,)
       ]),
     );
   }

@@ -8,17 +8,18 @@ class MyCustomInput extends StatelessWidget {
       {Key? key,
       required this.textController,
       required this.focusNode,
-      required this.hintText})
+      required this.hintText, required this.keyType})
       : super(key: key);
 
   final TextEditingController textController;
   final FocusNode focusNode;
   final String hintText;
+  final TextInputType keyType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: TextInputType.phone,
+      keyboardType: keyType,
       controller: textController,
       focusNode: focusNode,
       textInputAction: TextInputAction.done,
