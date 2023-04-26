@@ -35,7 +35,10 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
                 width: 40,
                 height: 40,
               ),
-              Image.asset(MyIcons.logo2),
+              Image.asset(
+                MyIcons.logo2,
+                height: 40,
+              ),
               Image.asset(
                 MyIcons.wallet,
                 width: 40,
