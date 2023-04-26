@@ -6,6 +6,7 @@ class MyIcons{
   static const wallet = "assets/image/png/img_11.png";
   static const lottiee = "assets/image/png/img.png";
   static const otp = "assets/image/png/img_10.png";
+  static const book = "assets/image/png/img_7.png";
 
 
 

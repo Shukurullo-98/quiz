@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quiz/global_widgets/select_test_items.dart';
+import 'package:quiz/screens/quiz_screen.dart';
 import 'package:quiz/utils/icons.dart';
 
 import '../utils/colors.dart';
@@ -24,8 +26,8 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
           backgroundColor: MyColors.C_4047C1,
           systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: MyColors.C_4047C1,
-            statusBarBrightness: Brightness.light,
-            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.light,
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,8 +49,46 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
             ],
           )),
       body: SingleChildScrollView(
-        child: Column(
-          children: [],
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              SelectTestItems(
+                gradientColors: MyColors.redBar,
+                text: 'English',
+                questionCount: '10',
+                iconPath: MyIcons.book,
+                direction: 1,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return MyQuizScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+              SelectTestItems(
+                gradientColors: MyColors.blueBar,
+                text: 'English',
+                questionCount: '10',
+                iconPath: MyIcons.book,
+                direction: 2,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return MyQuizScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
