@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz/global_widgets/my_custom_input.dart';
+import 'package:quiz/screens/select_quiz_screen.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../global_widgets/appbar.dart';
@@ -101,7 +102,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           padding: EdgeInsets.symmetric(horizontal: 50.w),
           child: MyButton(
             buttonText: "Register",
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return SelectQuizType();
+                  },
+                ),
+              );
+            },
           ),
         ),
         SizedBox(
