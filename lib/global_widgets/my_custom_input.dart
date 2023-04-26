@@ -38,9 +38,6 @@ class MyCustomInput extends StatelessWidget {
         ),
       ),
       onChanged: (value) {
-        if (value.length == 13) {
-          focusNode.unfocus();
-        }
       },
     );
   }

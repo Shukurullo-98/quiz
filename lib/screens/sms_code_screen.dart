@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:quiz/screens/registration_screen.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../global_widgets/appbar.dart';
@@ -75,7 +76,19 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
           child: MyButton(
             buttonText: "Login",
             onTap: () {
-              if (textController.text == "123456") {}
+              if (textController.text == "123456") {
+                UtilityFunctions.getMyToast(message: "Enter personal info");
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const RegistrationScreen();
+                    },
+                  ),
+                );
+              } else {
+                UtilityFunctions.getMyToast(message: "Invalid SMS code");
+              }
             },
           ),
         ),
