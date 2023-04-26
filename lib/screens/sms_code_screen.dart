@@ -20,6 +20,8 @@ class SMSCodeScreen extends StatefulWidget {
 
 class _SMSCodeScreenState extends State<SMSCodeScreen> {
   final TextEditingController textController = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+
 
   @override
   void dispose() {
@@ -55,6 +57,7 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 85),
           child: PinFieldAutoFill(
+            focusNode: focusNode,
             controller: textController,
             decoration: UnderlineDecoration(
               textStyle: MyTextStyle.interBold700
@@ -63,8 +66,8 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
                 Colors.black,
               ),
             ),
-            onCodeSubmitted: (value) {},
-            onCodeChanged: (value) {},
+            onCodeSubmitted: (value) {focusNode.unfocus();},
+            onCodeChanged: (value) {if(value?.length == 6){focusNode.unfocus();}},
             codeLength: 6,
           ),
         ),

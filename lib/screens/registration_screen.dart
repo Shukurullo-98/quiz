@@ -51,36 +51,57 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         Image.asset(MyIcons.logo),
         SizedBox(
-          height: 130.h,
+          height: 60.h,
         ),
-        MyCustomInput(textController: textController1,
-            focusNode: focusNode1,
-            hintText: "Enter your mobile number",
-            keyType: TextInputType.phone, isPassword: false,),
-        SizedBox(
-          height: 15.h,
-        ),
-        MyCustomInput(textController: textController2,
-            focusNode: focusNode2,
-            hintText: "Password",
-            keyType: TextInputType.text, isPassword: true,),
-        SizedBox(
-          height: 15.h,
-        ),
-        MyCustomInput(textController: textController3,
-            focusNode: focusNode3,
-            hintText: "Confirm Password",
-            keyType: TextInputType.text, isPassword: true,),
-        SizedBox(
-          height: 50.h,
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 40.h),
+          child: Column(
+            children: [
+              MyCustomInput(
+                textController: textController1,
+                focusNode: focusNode1,
+                hintText: "Enter your mobile number",
+                keyType: TextInputType.phone,
+                isPassword: false,
+                valueChanged: (value) {
+                  if (value.length == 13) {
+                    focusNode1.unfocus();
+                  }
+                },
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              MyCustomInput(
+                textController: textController2,
+                focusNode: focusNode2,
+                hintText: "Password",
+                keyType: TextInputType.text,
+                isPassword: true,
+                valueChanged: (value) {},
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              MyCustomInput(
+                textController: textController3,
+                focusNode: focusNode3,
+                hintText: "Confirm Password",
+                keyType: TextInputType.text,
+                isPassword: true,
+                valueChanged: (value) {},
+              ),
+              SizedBox(
+                height: 50.h,
+              ),
+            ],
+          ),
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 50.w),
           child: MyButton(
             buttonText: "Register",
-            onTap: () {
-
-            },
+            onTap: () {},
           ),
         ),
         SizedBox(
@@ -95,7 +116,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 fontSize: 20.sp, color: MyColors.black.withOpacity(0.5)),
           ),
         ),
-
       ]),
     );
   }

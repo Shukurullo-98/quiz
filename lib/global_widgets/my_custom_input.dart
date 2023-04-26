@@ -10,7 +10,7 @@ class MyCustomInput extends StatelessWidget {
       required this.focusNode,
       required this.hintText,
       required this.keyType,
-      required this.isPassword})
+      required this.isPassword, required this.valueChanged})
       : super(key: key);
 
   final TextEditingController textController;
@@ -18,6 +18,7 @@ class MyCustomInput extends StatelessWidget {
   final String hintText;
   final TextInputType keyType;
   final bool isPassword;
+  final ValueChanged<String> valueChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,7 @@ class MyCustomInput extends StatelessWidget {
           borderSide: BorderSide(color: MyColors.C_E5E5E5),
         ),
       ),
-      onChanged: (value) {
-      },
+      onChanged: valueChanged,
     );
   }
 }
