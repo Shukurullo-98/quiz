@@ -47,7 +47,7 @@ class _LoginState extends State<Login> {
             textController: textController,
             focusNode: focusNode,
             hintText: "Enter your mobile number",
-            keyType: TextInputType.phone,
+            keyType: TextInputType.phone, isPassword: false,
           ),
         ),
         SizedBox(

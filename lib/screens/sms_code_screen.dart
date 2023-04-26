@@ -18,9 +18,13 @@ class SMSCodeScreen extends StatefulWidget {
 }
 
 class _SMSCodeScreenState extends State<SMSCodeScreen> {
-  get textController => null;
+  final TextEditingController textController = TextEditingController();
 
-  get focusNode => null;
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +54,7 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 85),
           child: PinFieldAutoFill(
+            controller: textController,
             decoration: UnderlineDecoration(
               textStyle: MyTextStyle.interBold700
                   .copyWith(fontSize: 25, color: Colors.black.withOpacity(0.5)),
@@ -69,10 +74,11 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
           padding: EdgeInsets.symmetric(horizontal: 50.w),
           child: MyButton(
             buttonText: "Login",
-            onTap: () {},
+            onTap: () {
+              if (textController.text == "123456") {}
+            },
           ),
         ),
-
         SizedBox(
           height: 20.h,
         ),
@@ -86,7 +92,11 @@ class _SMSCodeScreenState extends State<SMSCodeScreen> {
           ),
         ),
         Expanded(child: SizedBox()),
-        Image.asset(MyIcons.otp, width: 200, height: 200,)
+        Image.asset(
+          MyIcons.otp,
+          width: 200,
+          height: 200,
+        )
       ]),
     );
   }

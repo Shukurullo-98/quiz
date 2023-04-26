@@ -8,13 +8,16 @@ class MyCustomInput extends StatelessWidget {
       {Key? key,
       required this.textController,
       required this.focusNode,
-      required this.hintText, required this.keyType})
+      required this.hintText,
+      required this.keyType,
+      required this.isPassword})
       : super(key: key);
 
   final TextEditingController textController;
   final FocusNode focusNode;
   final String hintText;
   final TextInputType keyType;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class MyCustomInput extends StatelessWidget {
       keyboardType: keyType,
       controller: textController,
       focusNode: focusNode,
+      obscureText: isPassword,
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
         hintText: hintText,
