@@ -15,7 +15,7 @@ class SelectTestItems extends StatelessWidget {
 
   final List<Color> gradientColors;
   final String text;
-  final String questionCount;
+  final int questionCount;
   final String iconPath;
   final int direction;
   final VoidCallback onTap;

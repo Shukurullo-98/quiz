@@ -5,17 +5,24 @@ import 'package:quiz/global_widgets/select_test_items.dart';
 import 'package:quiz/screens/quiz_screen.dart';
 import 'package:quiz/utils/icons.dart';
 
+import '../data/quiz_repo.dart';
+import '../model/quiz_data.dart';
 import '../utils/colors.dart';
 import '../utils/style.dart';
 
 class SelectQuizType extends StatefulWidget {
-  const SelectQuizType({Key? key}) : super(key: key);
+  const SelectQuizType({Key? key, required this.quizList}) : super(key: key);
+
+  final List<QuizData> quizList;
 
   @override
   State<SelectQuizType> createState() => _SelectQuizTypeState();
 }
 
 class _SelectQuizTypeState extends State<SelectQuizType> {
+  List<QuizData> englishQuizDataSet = QuizRepository.getEnglishQuiz();
+  List<QuizData> mathQuizDataSet = QuizRepository.getMathQuiz();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +63,7 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
               SelectTestItems(
                 gradientColors: MyColors.redBar,
                 text: 'English',
-                questionCount: '10',
+                questionCount: englishQuizDataSet.length,
                 iconPath: MyIcons.book,
                 direction: 1,
                 onTap: () {
@@ -64,7 +71,9 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return MyQuizScreen();
+                        return MyQuizScreen(
+                          quizList : englishQuizDataSet;
+                        );
                       },
                     ),
                   );
@@ -73,7 +82,7 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
               SelectTestItems(
                 gradientColors: MyColors.blueBar,
                 text: 'English',
-                questionCount: '10',
+                questionCount: mathQuizDataSet.length,
                 iconPath: MyIcons.book,
                 direction: 2,
                 onTap: () {
