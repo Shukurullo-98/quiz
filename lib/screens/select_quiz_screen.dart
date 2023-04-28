@@ -72,7 +72,8 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
                     MaterialPageRoute(
                       builder: (BuildContext context) {
                         return MyQuizScreen(
-                          quizList : englishQuizDataSet;
+                          quizList: englishQuizDataSet,
+                          quizName: "English",
                         );
                       },
                     ),
@@ -90,7 +91,10 @@ class _SelectQuizTypeState extends State<SelectQuizType> {
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return MyQuizScreen();
+                        return MyQuizScreen(
+                          quizList: mathQuizDataSet,
+                          quizName: 'Math',
+                        );
                       },
                     ),
                   );

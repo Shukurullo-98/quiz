@@ -107,7 +107,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return SelectQuizType();
+                    return SelectQuizType(quizList: [],);
                   },
                 ),
               );
