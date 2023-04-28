@@ -7,6 +7,8 @@ class MyIcons{
   static const lottiee = "assets/image/png/img.png";
   static const otp = "assets/image/png/img_10.png";
   static const book = "assets/image/png/img_7.png";
+  static const timer = "assets/image/png/img_13.png";
+  static const selected = "assets/image/png/img_14.png";
 
 
 
