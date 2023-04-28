@@ -15,5 +15,6 @@ class MyIcons{
   // lottie
 
   static const loginLottie = "assets/lottie/lottie.json";
+  static const congratulation = "assets/lottie/congratulation.json";
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/global_widgets/my_button.dart';
 import 'package:quiz/global_widgets/variant_items.dart';
+import 'package:quiz/screens/result_screen.dart';
 import 'package:quiz/utils/colors.dart';
 import 'package:quiz/utils/style.dart';
 import 'package:quiz/utils/utility_functions.dart';
@@ -25,7 +26,9 @@ class _MyQuizScreenState extends State<MyQuizScreen> {
   int expendableValue = 1;
   int currentQuestionIndex = 0;
   String selectedVariant = '';
+  int trueAnswerCount = 0;
 
+  // List<String> selectedAnswersSet = [];
   @override
   void initState() {
     super.initState();
@@ -135,12 +138,30 @@ class _MyQuizScreenState extends State<MyQuizScreen> {
                 onTap: () {
                   setState(() {
                     if (selectedVariant.isNotEmpty) {
-                      if (currentQuestionIndex + 1 < widget.quizList.length) {
-                        currentQuestionIndex++;
+                      if (currentQuestionIndex + 1 <= widget.quizList.length) {
+                        if (selectedVariant ==
+                            widget.quizList[currentQuestionIndex].trueAnswer) {
+                          trueAnswerCount++;
+                        }
+                        if (currentQuestionIndex + 1 !=
+                            widget.quizList.length) {
+                          currentQuestionIndex++;
+                        } else if (currentQuestionIndex + 1 ==
+                            widget.quizList.length) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return ResultScreen(
+                                  questionCount: trueAnswerCount,
+                                  trueQuestionCount: widget.quizList.length,
+                                );
+                              },
+                            ),
+                          );
+                        }
                         expendableValue++;
                         selectedVariant = "";
-                      } else {
-                        UtilityFunctions.getMyToast(message: "Savollar tugadi");
                       }
                     } else {
                       UtilityFunctions.getMyToast(message: "Variant tanlang");
